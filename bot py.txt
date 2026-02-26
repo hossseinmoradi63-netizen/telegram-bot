@@ -1,0 +1,16 @@
+import telebot
+
+# جایگزین کن با توکن ربات تلگرامت
+BOT_TOKEN = "8706280093:AAEjMkihr7iaWNvj0RZhUvD8WwisbJJj_Y4"
+
+bot = telebot.TeleBot(BOT_TOKEN)
+
+# لیست سهم‌ها
+stocks = ["غنوش", "قثابت", "فروی", "کتوسعه", "زنگان"]
+
+# دستور شروع
+@bot.message_handler(commands=['start'])
+def start_message(message):
+    bot.send_message(message.chat.id, f"سلام! ربات بورس شما آماده است.\nسهام پیگیری شده: {', '.join(stocks)}")
+
+bot.polling()
